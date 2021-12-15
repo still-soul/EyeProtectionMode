@@ -74,7 +74,7 @@ class CreateEyeCareViewHelper(private val activity: Activity, lifecycle: Lifecyc
             closeEye()
             return
         }
-        val nightViewParam = WindowManager.LayoutParams(
+        val eyeCareViewParam = WindowManager.LayoutParams(
             WindowManager.LayoutParams.TYPE_APPLICATION,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                     or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
@@ -85,15 +85,15 @@ class CreateEyeCareViewHelper(private val activity: Activity, lifecycle: Lifecyc
             PixelFormat.TRANSPARENT
         )
 
-        nightViewParam.gravity = Gravity.TOP or Gravity.START
+        eyeCareViewParam.gravity = Gravity.TOP or Gravity.START
 
         activity.windowManager.defaultDisplay.apply {
             val point = Point()
             this.getRealSize(point)
-            nightViewParam.width = point.x
-            nightViewParam.height = point.y
+            eyeCareViewParam.width = point.x
+            eyeCareViewParam.height = point.y
         }
-        activity.windowManager.addView(eyeCareView, nightViewParam)
+        activity.windowManager.addView(eyeCareView, eyeCareViewParam)
         openEye()
     }
 
